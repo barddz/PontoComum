@@ -3,39 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PontoComum</title>
+
+  <title>PontoComum - Encontre e compartilhe eventos da comunidade</title>
+
+  <meta name="description" content="PontoComum é uma plataforma para encontrar e divulgar eventos locais, como encontros, feiras, workshops e atividades esportivas na sua comunidade.">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="topbar">
     <div class="marca">
-      <div class="logo">
-        <img src="assets/logo.png" alt="Logo do site" class="site-logo">
-      </div>
-      <div class="nome-site">PontoComum</div>
+      <a href="index.html" class="logo" aria-label="Página inicial PontoComum">
+        <img src="assets/logo.png" alt="PontoComum - plataforma de eventos da comunidade" class="site-logo">
+      </a>
+      <div class="nome-site">
+        <span class="nome-ponto">Ponto</span><span class="nome-comum">Comum</span>
+      </div>      
     </div>
   
     <div class="botoes-menu">
-      <button class="botao-login">Login</button>
-      <button class="botao-cadastro">Cadastrar-se</button>
-    </div>
-  
-    <div class="barra-pesquisa">
-      <input type="text" placeholder="Buscar eventos..." id="search-bar">
-      <button class="botao-pesquisa">🔍</button>
-    </div>
+      <a href="login.html" class="botao-login">Login</a>
+      <a href="login.html" class="botao-cadastro">Cadastrar-se</a>
+    </div>  
   </header>
   
   <main>
-    <p>Bem-vindo à plataforma de eventos da comunidade!</p>
+    <section class="secao-destaque">
+      <h1>Encontre e compartilhe eventos da sua comunidade</h1>
+      <p class="destaque-subtitulo">
+        O PontoComum conecta pessoas a eventos locais como encontros, feiras,
+        workshops, atividades esportivas e muito mais.
+      </p>
 
+      <div class="destaque-botoes">
+        <a href="eventos.html" class="btn-primario">Ver eventos</a>
+        <a href="cadastro.html" class="btn-secundario">Criar evento</a>
+      </div>
+    </section>
+  
+    <section class="secao-como-funciona" id="como-funciona">
+      <h2>Como funciona?</h2>
+
+      <div class="passos">
+        <div class="passo">
+          <div class="numero">1</div>
+          <h3>Crie sua conta</h3>
+          <p>Cadastre-se rapidamente para começar a participar da comunidade.</p>
+        </div>
+
+        <div class="passo">
+          <div class="numero">2</div>
+          <h3>Explore eventos</h3>
+          <p>Navegue pelos eventos listados e encontre atividades que te interessem.</p>
+        </div>
+
+        <div class="passo">
+          <div class="numero">3</div>
+          <h3>Divulgue um evento</h3>
+          <p>Use nosso formulário para publicar seu próprio evento.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="page-footer">     
     <address>
-    <p>Email para contato: <a href="mailto:contato@pontocomum.com">contato@pontocomum.com</a></p>
-</address>
-</footer>       
+      <p>Email para contato: <a href="mailto:contato@pontocomum.com">contato@pontocomum.com</a></p>
+    </address>
+  </footer>       
 
   <script src="script.js"></script>
 </body>
