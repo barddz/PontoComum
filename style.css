@@ -332,5 +332,39 @@ main { flex: 1; }
   }
 }
 
+/* ESTILIZAÇAO DE DETALHES.html */
+
+.detalhes-container {
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 16px;
+  background: #f6f7fb;
+  border-radius: 12px;
+}
+
+.detalhes-container h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.detalhes-container p {
+  font-size: 15px;
+  margin: 6px 0;
+}
+
+#mapa {
+  width: 100%;
+  height: 280px;
+  margin-top: 14px;
+  border-radius: 10px;
+  border: 2px solid #5677a5;
+}
+
+.voltar-btn {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+
 
   
