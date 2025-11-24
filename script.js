@@ -1,3 +1,15 @@
+// DESTACAR LINK DA PÁGINA ATUAL NO MENU
+const caminhoAtual = window.location.pathname.split("/").pop(); 
+const linksMenu = document.querySelectorAll(".menu-link");
+
+linksMenu.forEach(link => {
+  const href = link.getAttribute("href");
+
+  if (href === caminhoAtual) {
+    link.classList.add("ativo");
+  }
+});
+
 /* CADASTRO DE EVENTOS (cadastro.html)
 ========================================== */
 

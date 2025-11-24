@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detalhes do Evento - PontoComum</title>
-
+  <title>Criar Conta - PontoComum</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
   <header class="topbar">
     <div class="marca">
       <a href="index.html" class="logo" aria-label="Página inicial PontoComum">
@@ -18,21 +17,34 @@
         <span class="nome-ponto">Ponto</span><span class="nome-comum">Comum</span>
       </div>
     </div>
-  
+
     <nav class="botoes-menu">
       <a href="index.html" class="menu-link">Home</a>
       <a href="eventos.html" class="menu-link">Eventos</a>
       <a href="cadastro.html" class="menu-link">Criar Evento</a>
-      <a href="login.html" class="menu-link destaque">Login</a>
+      <a href="login.html" class="menu-link">Login</a>
     </nav>
   </header>
-  
 
-<main class="detalhes-container">
+  <main class="conteudo-form">
+    <h1>Criar Conta</h1>
 
-  <h1 id="evento-titulo">teste</h1>
+    <form id="form-criar-conta">
+      <label for="nome">Nome completo</label>
+      <input type="text" id="nome" required>
 
-</main>
+      <label for="email">Email</label>
+      <input type="email" id="email" required>
 
+      <label for="senha">Senha</label>
+      <input type="password" id="senha" required>
+
+      <button type="submit" class="btn-primario">Criar conta</button>
+    </form>
+
+    <p>Já possui conta? <a href="login.html">Fazer login</a></p>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
