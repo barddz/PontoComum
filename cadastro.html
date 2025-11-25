@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
+<body>
+
 <header class="topbar">
   <div class="marca">
     <a href="index.html" class="logo" aria-label="Página inicial PontoComum">
@@ -21,34 +23,34 @@
     <a href="index.html" class="menu-link">Home</a>
     <a href="eventos.html" class="menu-link">Eventos</a>
     <a href="cadastro.html" class="menu-link">Criar Evento</a>
-    <a href="login.html" class="menu-link destaque">Login</a>
+    <a href="login.html" class="menu-link">Login</a>
   </nav>
 </header>
 
-  
-  <main class="conteudo-form">
-    <h1>Cadastrar Evento</h1>
+<main class="conteudo-form">
+  <h1>Cadastrar Evento</h1>
 
-    <form id="form-evento">
-      <label for="titulo">Título do evento</label>
-      <input type="text" id="t    itulo" required>
+  <form id="form-evento">
 
-      <label for="data">Data</label>
-      <input type="date" id="data" required>
+    <label for="titulo">Título do evento</label>
+    <input type="text" id="titulo" required>
 
-      <label for="hora">Horário</label>
-      <input type="time" id="hora" required>
+    <label for="data">Data</label>
+    <input type="date" id="data" required>
 
-      <label for="local">Local</label>
-      <input type="text" id="local" placeholder="Ex: Praça Central" required>
+    <label for="hora">Horário</label>
+    <input type="time" id="hora" required>
 
-      <label for="descricao">Descrição</label>
-      <textarea id="descricao" rows="4" required></textarea>
+    <label for="local">Local</label>
+    <input type="text" id="local" placeholder="Ex: Praça Central" required>
 
-      <button type="submit" class="btn-primario">Salvar evento</button>
-    </form>
-  </main>
+    <label for="descricao">Descrição</label>
+    <textarea id="descricao" rows="4" required></textarea>
 
-  <script src="script.js"></script>
+    <button type="submit" class="btn-primario">Salvar evento</button>
+  </form>
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>

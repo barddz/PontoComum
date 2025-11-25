@@ -353,7 +353,7 @@ main { flex: 1; }
 }
 
 #mapa {
-  width: 100%;
+  width: 100%;    
   height: 280px;
   margin-top: 14px;
   border-radius: 10px;
@@ -371,6 +371,25 @@ main { flex: 1; }
   border-bottom: 2px solid #d49645;
   padding-bottom: 2px;
 }
+
+/* Detalhes.html */
+
+.detalhes-container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #edf0f5;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.detalhes-container h1 {
+  margin-bottom: 10px;
+}
+
+#mapa {
+  margin-top: 15px;
+}
+
 
 
 

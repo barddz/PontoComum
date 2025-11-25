@@ -5,34 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detalhes do Evento - PontoComum</title>
 
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
 </head>
 
 <body>
 
-  <header class="topbar">
-    <div class="marca">
-      <a href="index.html" class="logo" aria-label="Página inicial PontoComum">
-        <img src="assets/logo.png" alt="Logo do site PontoComum" class="site-logo">
-      </a>
-      <div class="nome-site">
-        <span class="nome-ponto">Ponto</span><span class="nome-comum">Comum</span>
-      </div>
+<header class="topbar">
+  <div class="marca">
+    <a href="index.html" class="logo">
+      <img src="assets/logo.png" class="site-logo">
+    </a>
+    <div class="nome-site">
+      <span class="nome-ponto">Ponto</span><span class="nome-comum">Comum</span>
     </div>
-  
-    <nav class="botoes-menu">
-      <a href="index.html" class="menu-link">Home</a>
-      <a href="eventos.html" class="menu-link">Eventos</a>
-      <a href="cadastro.html" class="menu-link">Criar Evento</a>
-      <a href="login.html" class="menu-link destaque">Login</a>
-    </nav>
-  </header>
-  
+  </div>
+
+  <nav class="botoes-menu">
+    <a href="index.html" class="menu-link">Home</a>
+    <a href="eventos.html" class="menu-link">Eventos</a>
+    <a href="cadastro.html" class="menu-link">Criar Evento</a>
+    <a href="login.html" class="menu-link">Login</a>
+  </nav>
+</header>
 
 <main class="detalhes-container">
+  <h1 id="evento-titulo"></h1>
 
-  <h1 id="evento-titulo">teste</h1>
+  <p><strong>Data:</strong> <span id="evento-data"></span></p>
+  <p><strong>Hora:</strong> <span id="evento-hora"></span></p>
+  <p><strong>Local:</strong> <span id="evento-local"></span></p>
 
+  <h3>Descrição</h3>
+  <p id="evento-descricao"></p>
+
+  <h3>Localização no mapa</h3>
+  <div id="mapa" style="height: 300px; border-radius: 10px;"></div>
+
+  <br>
+  <a href="eventos.html" class="btn-primario">Voltar</a>
 </main>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
