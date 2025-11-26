@@ -1,36 +1,51 @@
+:root {
+  --cor-fundo: #9baccc;
+  --cor-topbar: #5677a5;
+  --cor-primaria: #1f395b;
+  --cor-link: #005b96;
+  --cor-destaque: #d49645;
+  --cor-card-suave: #edf0f5;
+  --raio-botao: 20px;
+  --sombra-card: 0 2px 6px rgba(0,0,0,0.1);
+  --font-base: 'Poppins', sans-serif;
+}
+
+/* LAYOUT GERAL */
+
 html, body {
   margin: 0;
   height: 100%;
-  font-family: 'Poppins', sans-serif;
-  background-color: #9baccc;
+  font-family: var(--font-base);
+  background-color: var(--cor-fundo);
   display: flex;
   flex-direction: column;
 }
 
-main { flex: 1; }
+main {
+  flex: 1;
+}
 
 .page-footer {
-  background: #9baccc ;
+  background: var(--cor-fundo);
   text-align: center;
   padding: 12px;
   font-size: 12px;
 }
 
+/* TOPO / MARCA */
+
 .topbar {
-  display: flex;          
+  display: flex;
   flex-direction: column;
   align-items: center;
-  background: #5677a5;
+  background: var(--cor-topbar);
   padding: 16px;
-  gap: 10px;    
-}   
+  gap: 10px;
+}
 
-.nome-ponto { color: #ffffff; }
-.nome-comum { color: #d49645; }
-      
 .marca {
   display: flex;
-  align-items: center;    
+  align-items: center;
 }
 
 .site-logo {
@@ -43,114 +58,126 @@ main { flex: 1; }
   letter-spacing: 0.4px;
 }
 
+.nome-ponto { color: #ffffff; }
+.nome-comum { color: var(--cor-destaque); }
+
+/* MENU */
+
 .botoes-menu {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
 }
 
-.botoes-menu a {
-  background-color: white;
-  color: #005b96;
-  border: none;
-  border-radius: 20px;
+/* estilo base para todos os botões/links de ação */
+.botoes-menu a,
+.btn-primario,
+.btn-secundario,
+.conteudo-form button,
+#form-evento button {
+  display: inline-block;
   padding: 8px 14px;
+  border-radius: var(--raio-botao);
   font-weight: 600;
   font-size: 14px;
-  cursor: pointer;
   text-decoration: none;
-  display: inline-block;
+  border: none;
+  cursor: pointer;
 }
 
-   .secao-destaque {
-    text-align: center;
-    padding: 40px 20px;
-    color: white;
-  }
-  
-  .secao-destaque h1 {
-    font-size: 24px;
-    font-weight: 700;
-    margin-bottom: 12px;
-  }
-  
-  .destaque-subtitulo {
-    font-size: 14px;
-    max-width: 320px;
-    margin: 0 auto 20px;
-    line-height: 1.4;
-  }
-  
+/* variações de cor */
+.botoes-menu a,
+.btn-primario {
+  background-color: #ffffff;
+  color: var(--cor-link);
+}
 
-  .destaque-botoes {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
-  
-  .btn-primario,
-  .btn-secundario {
-    display: inline-block;
-    padding: 10px 16px;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-  }
-  
-  .btn-primario {
-    background-color: white;
-    color: #005b96;
-  }
-  
-  .btn-secundario {
-    background-color: #1f395b;
-    color: white;
-  }
-  
-  .secao-como-funciona {
-    background: #edf0f5;
-    padding: 40px 20px;
-    text-align: center;
-  }
-  
-  .secao-como-funciona h2 {
-    font-size: 20px;
-    margin-bottom: 28px;
-  }
-  
-  .passos {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .passo {
-    background: white;
-    padding: 16px;
-    border-radius: 12px;
-    text-align: center;
-  }
-  
-  .numero {
-    width: 30px;
-    height: 30px;
-    margin: 0 auto 10px;
-    background: #506f99;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-  }
+.btn-secundario,
+.conteudo-form button,
+#form-evento button {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+}
 
-  /* ESTILO DA PÁGINA DE LOGIN */
+.menu-link.ativo {
+  font-weight: 700;
+  color: var(--cor-destaque);
+  border-bottom: 2px solid var(--cor-destaque);
+  padding-bottom: 2px;
+}
+
+/* HOME */
+
+.secao-destaque {
+  text-align: center;
+  padding: 40px 20px;
+  color: #ffffff;
+}
+
+.secao-destaque h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.destaque-subtitulo {
+  font-size: 14px;
+  max-width: 320px;
+  margin: 0 auto 20px;
+  line-height: 1.4;
+}
+
+.destaque-botoes {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* COMO FUNCIONA */
+
+.secao-como-funciona {
+  background: var(--cor-card-suave);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.secao-como-funciona h2 {
+  font-size: 20px;
+  margin-bottom: 28px;
+}
+
+.passos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.passo {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.numero {
+  width: 30px;
+  height: 30px;
+  margin: 0 auto 10px;
+  background: #506f99;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+}
+
+/* FORMULÁRIOS (login, criar conta, cadastrar evento) */
 
 .conteudo-form {
   max-width: 360px;
   margin: 40px auto;
-  background: #506f99;  
+  background: #506f99;
   padding: 24px;
   border-radius: 12px;
   text-align: center;
@@ -159,80 +186,25 @@ main { flex: 1; }
 .conteudo-form h1 {
   margin-bottom: 20px;
   font-size: 22px;
-  color: #1f395b;
+  color: var(--cor-primaria);
 }
 
-.conteudo-form form {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.conteudo-form label {
-  text-align: left;
-  font-weight: 600;
-  font-size: 14px;
-  color: #1f395b;
-}
-
-.conteudo-form input {
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #90a4c4;
-  font-size: 14px;
-}
-
-.conteudo-form input:focus {
-  outline: none;
-  border-color: #5677a5;
-}
-
-.conteudo-form button {
-  background-color: #1f395b;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 14px;
-  cursor: pointer;
-  margin-top: 4px;
-}
-
-.conteudo-form button:hover {
-  background-color: #295081;
-}
-
-.conteudo-form p {
-  margin-top: 16px;
-  font-size: 14px;
-}
-
-.conteudo-form a {
-  color: #1f395b;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.conteudo-form a:hover {
-  text-decoration: underline;
-}
-
-/* ESTILO DA PÁGINA DE CADASTRO DE EVENTO */
-
+.conteudo-form form,
 #form-evento {
   display: flex;
   flex-direction: column;
   gap: 14px;
 }
 
+.conteudo-form label,
 #form-evento label {
   text-align: left;
   font-weight: 600;
   font-size: 14px;
-  color: #1f395b;
+  color: var(--cor-primaria);
 }
 
+.conteudo-form input,
 #form-evento input,
 #form-evento textarea {
   padding: 10px 12px;
@@ -246,29 +218,29 @@ main { flex: 1; }
   resize: vertical;
 }
 
+.conteudo-form input:focus,
 #form-evento input:focus,
 #form-evento textarea:focus {
   outline: none;
-  border-color: #5677a5;
+  border-color: var(--cor-topbar);
 }
 
-#form-evento button {
-  background-color: #1f395b;
-  color: white;
-  border: none;
-  padding: 10px;
-  border-radius: 20px;
-  font-weight: 600;
+.conteudo-form p {
+  margin-top: 16px;
   font-size: 14px;
-  cursor: pointer;
-  margin-top: 6px;
 }
 
-#form-evento button:hover {
-  background-color: #295081;
+.conteudo-form a {
+  color: var(--cor-primaria);
+  font-weight: 600;
+  text-decoration: none;
 }
 
-/* ESTILO DA PAGINA DE EVENTOS */
+.conteudo-form a:hover {
+  text-decoration: underline;
+}
+
+/* LISTA DE EVENTOS */
 
 .lista-eventos {
   padding: 30px 20px;
@@ -278,28 +250,26 @@ main { flex: 1; }
 .lista-eventos h1 {
   font-size: 24px;
   margin-bottom: 24px;
-  color: #1f395b;
+  color: var(--cor-primaria);
 }
 
-/* GRID RESPONSIVO */
 .grid-eventos {
   display: grid;
   grid-template-columns: 1fr;
   gap: 20px;
 }
 
-/* CARDS DOS EVENTOS */
 .card-evento {
-  background: white;
+  background: #ffffff;
   padding: 16px;
   border-radius: 12px;
   text-align: left;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: var(--sombra-card);
 }
 
 .card-evento h3 {
   margin: 0 0 8px;
-  color: #1f395b;
+  color: var(--cor-primaria);
   font-size: 18px;
 }
 
@@ -310,16 +280,13 @@ main { flex: 1; }
 }
 
 .card-evento .btn-secundario {
-  display: inline-block;
   margin-top: 12px;
-  background: #1f395b;
-  color: white;
   padding: 8px 12px;
   border-radius: 10px;
-  font-size: 14px;
 }
 
-/* GRID PARA TELAS MAIORES */
+/* GRID RESPONSIVO */
+
 @media (min-width: 600px) {
   .grid-eventos {
     grid-template-columns: repeat(2, 1fr);
@@ -332,13 +299,13 @@ main { flex: 1; }
   }
 }
 
-/* ESTILIZAÇAO DE DETALHES.html */
+/* DETALHES DO EVENTO */
 
 .detalhes-container {
-  max-width: 700px;
-  margin: 30px auto;
-  padding: 16px;
-  background: #f6f7fb;
+  max-width: 600px;
+  margin: 40px auto;
+  background: var(--cor-card-suave);
+  padding: 20px;
   border-radius: 12px;
 }
 
@@ -353,45 +320,14 @@ main { flex: 1; }
 }
 
 #mapa {
-  width: 100%;    
+  width: 100%;
   height: 280px;
-  margin-top: 14px;
+  margin-top: 15px;
   border-radius: 10px;
-  border: 2px solid #5677a5;
+  border: 2px solid var(--cor-topbar);
 }
 
 .voltar-btn {
   display: inline-block;
   margin-top: 20px;
 }
-
-.menu-link.ativo {
-  font-weight: 700;
-  color: #d49645;
-  border-bottom: 2px solid #d49645;
-  padding-bottom: 2px;
-}
-
-/* Detalhes.html */
-
-.detalhes-container {
-  max-width: 600px;
-  margin: 40px auto;
-  background: #edf0f5;
-  padding: 20px;
-  border-radius: 12px;
-}
-
-.detalhes-container h1 {
-  margin-bottom: 10px;
-}
-
-#mapa {
-  margin-top: 15px;
-}
-
-
-
-
-
-  

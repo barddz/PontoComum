@@ -1,3 +1,75 @@
+// Criar conta
+const formCriarConta = document.getElementById("form-criar-conta");
+
+if (formCriarConta) {
+  formCriarConta.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const nome = document.getElementById("nome").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const senha = document.getElementById("senha").value;
+
+    // Puxa usuários do LocalStorage
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    // Verifica se já existe
+    const jaExiste = usuarios.      some(user => user.email === email);
+    if (jaExiste) {
+      alert("Este email já está cadastrado.");
+      return;
+    }
+
+    // Cria e salva
+    usuarios.push({ nome, email, senha });
+    localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+    alert("Conta criada com sucesso!");
+    window.location.href = "login.html";
+  });
+}
+
+
+
+// Login
+const formLogin = document.getElementById("login-form");
+
+if (formLogin) {
+  formLogin.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("login-email").value.trim();
+    const senha = document.getElementById("login-senha").value;
+
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+    const user = usuarios.find(u => u.email === email && u.senha === senha);
+
+    if (!user) {
+      alert("Email ou senha incorretos.");
+      return;
+    }
+
+    // Cria Token
+    const token = "token_" + Date.now();
+
+    sessionStorage.setItem("token", token);
+    sessionStorage.setItem("usuarioLogado", JSON.stringify(user));
+
+    alert("Login realizado com sucesso!");
+    window.location.href = "index.html";
+  });
+}
+
+// Bloqueia paginas que exigem login
+if (window.location.pathname.includes("cadastro.html")) {
+  const token = sessionStorage.getItem("token");
+
+  if (!token) {
+    alert("Você precisa estar logado para cadastrar eventos.");
+    window.location.href = "login.html";
+  }
+}
+
 // DESTACAR LINK DA PÁGINA ATUAL NO MENU
 const caminhoAtual = window.location.pathname.split("/").pop();
 const linksMenu = document.querySelectorAll(".menu-link");
