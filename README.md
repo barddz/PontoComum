@@ -27,3 +27,8 @@ Tecnologias Utilizadas
  Instalação
 
 Este projeto não requer instalação de dependências.
+
+1) Baixe o Repositório: git clone https://github.com/barddz/PontoComum.git
+2) Acesse a pasta do projeto
+3) Abra o arquivo index.html no navegador, clicando duas vezes no arquivo index.html, ou usando LiveServer no VScode
+
