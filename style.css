@@ -12,18 +12,25 @@
 
 /* LAYOUT GERAL */
 
-html, body {
+html {
   margin: 0;
-  height: 100%;
-  font-family: var(--font-base);
-  background-color: var(--cor-fundo);
+  padding: 0;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  font-family: var(--font-base);
+  background-color: var(--cor-fundo);
 }
 
 main {
   flex: 1;
 }
+
 
 .page-footer {
   background: var(--cor-fundo);

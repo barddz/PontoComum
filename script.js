@@ -1,4 +1,9 @@
-// Criar conta
+// JWT FIXO
+const TOKEN_JWT=
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTIzLCJuYW1lIjoiRW5nLiBDb21wdXRhXHUwMGU3XHUwMGUzbyIsInJvbGUiOiJKV1QiLCJpYXQiOjE3NTk5ODEzMTcsImV4cCI6MTc1OTk4NDkxN30.b1KfcSFInRwYnvRA0Ae5jYuL59KZmCsufPgISNGq0X0";
+
+// CRIAR CONTA
+
 const formCriarConta = document.getElementById("form-criar-conta");
 
 if (formCriarConta) {
@@ -8,18 +13,16 @@ if (formCriarConta) {
     const nome = document.getElementById("nome").value.trim();
     const email = document.getElementById("email").value.trim();
     const senha = document.getElementById("senha").value;
-
-    // Puxa usuários do LocalStorage
     const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
 
     // Verifica se já existe
-    const jaExiste = usuarios.      some(user => user.email === email);
+    const jaExiste = usuarios.some(user => user.email === email);
     if (jaExiste) {
       alert("Este email já está cadastrado.");
       return;
     }
 
-    // Cria e salva
+    // Salva
     usuarios.push({ nome, email, senha });
     localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
@@ -28,9 +31,8 @@ if (formCriarConta) {
   });
 }
 
+// LOGIN com JWT fixo
 
-
-// Login
 const formLogin = document.getElementById("login-form");
 
 if (formLogin) {
@@ -49,10 +51,8 @@ if (formLogin) {
       return;
     }
 
-    // Cria Token
-    const token = "token_" + Date.now();
-
-    sessionStorage.setItem("token", token);
+    // Salva o token JWT
+    sessionStorage.setItem("token", TOKEN_JWT);
     sessionStorage.setItem("usuarioLogado", JSON.stringify(user));
 
     alert("Login realizado com sucesso!");
@@ -60,7 +60,9 @@ if (formLogin) {
   });
 }
 
-// Bloqueia paginas que exigem login
+
+// Área Restrita — cadastro de eventos exige login
+
 if (window.location.pathname.includes("cadastro.html")) {
   const token = sessionStorage.getItem("token");
 
@@ -71,6 +73,7 @@ if (window.location.pathname.includes("cadastro.html")) {
 }
 
 // DESTACAR LINK DA PÁGINA ATUAL NO MENU
+
 const caminhoAtual = window.location.pathname.split("/").pop();
 const linksMenu = document.querySelectorAll(".menu-link");
 
@@ -80,7 +83,7 @@ linksMenu.forEach(link => {
   }
 });
 
-   //CADASTRO DE EVENTOS (cadastro.html)
+// CADASTRO DE EVENTOS
 
 const formEvento = document.getElementById("form-evento");
 
@@ -94,7 +97,6 @@ if (formEvento) {
     const localTexto = document.getElementById("local").value;
     const descricao = document.getElementById("descricao").value;
 
-    // Buscar coordenadas do endereço (Nominatim)
     const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(localTexto)}`;
     const resposta = await fetch(url);
     const dados = await resposta.json();
@@ -102,10 +104,9 @@ if (formEvento) {
     const lat = Number(dados[0].lat);
     const lng = Number(dados[0].lon);
 
-    // Salva o evento
     const eventos = JSON.parse(localStorage.getItem("eventos")) || [];
 
-    const novoEvento = {
+    eventos.push({
       id: Date.now(),
       titulo,
       data,
@@ -114,9 +115,8 @@ if (formEvento) {
       descricao,
       lat,
       lng
-    };
+    });
 
-    eventos.push(novoEvento);
     localStorage.setItem("eventos", JSON.stringify(eventos));
 
     alert("Evento cadastrado com sucesso!");
@@ -124,7 +124,7 @@ if (formEvento) {
   });
 }
 
-   //LISTAGEM DE EVENTOS (eventos.html)
+// LISTA DE EVENTOS
 
 const containerEventos = document.getElementById("container-eventos");
 
@@ -147,32 +147,33 @@ if (containerEventos) {
   }
 }
 
-// DETALHES DO EVENTO (detalhes.html)
+// DETALHES DO EVENTO
 
 if (window.location.pathname.includes("detalhes.html")) {
-
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
 
   const eventos = JSON.parse(localStorage.getItem("eventos")) || [];
   const evento = eventos.find(ev => ev.id == id);
 
-  // Preenche os textos
-  document.getElementById("evento-titulo").textContent = evento.titulo;
-  document.getElementById("evento-data").textContent = evento.data;
-  document.getElementById("evento-hora").textContent = evento.hora;
-  document.getElementById("evento-local").textContent = evento.local;
-  document.getElementById("evento-descricao").textContent = evento.descricao;
+  if (!evento) {
+    alert("Evento não encontrado.");
+  } else {
+    document.getElementById("evento-titulo").textContent = evento.titulo;
+    document.getElementById("evento-data").textContent = evento.data;
+    document.getElementById("evento-hora").textContent = evento.hora;
+    document.getElementById("evento-local").textContent = evento.local;
+    document.getElementById("evento-descricao").textContent = evento.descricao;
 
-  // Cria o mapa
-  const mapa = L.map("mapa").setView([evento.lat, evento.lng], 15);
+    const mapa = L.map("mapa").setView([evento.lat, evento.lng], 15);
 
-  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "© OpenStreetMap"
-  }).addTo(mapa);
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution: "© OpenStreetMap"
+    }).addTo(mapa);
 
-  L.marker([evento.lat, evento.lng])
-    .addTo(mapa)
-    .bindPopup(evento.local)
-    .openPopup();
+    L.marker([evento.lat, evento.lng])
+      .addTo(mapa)
+      .bindPopup(evento.local)
+      .openPopup();
+  }
 }
